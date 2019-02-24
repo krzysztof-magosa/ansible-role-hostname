@@ -1,0 +1,10 @@
+- name: Configure hostname
+  hostname:
+    name: "{{ hostname }}"
+
+- name: Amend /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostname_hosts_ip }} {% if hostname_domain %}{{ hostname }}.{{ hostname_domain }} {% endif %}{{ hostname }}"
+    regexp: "^{{ hostname_hosts_ip | regex_escape }}\\s"
+  when: hostname_hosts_enabled

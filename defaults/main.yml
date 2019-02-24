@@ -1,0 +1,11 @@
+# Hostname to set
+hostname: "{{ inventory_hostname }}"
+
+# Domain to append
+hostname_domain: ""
+
+# Whether to amend /etc/hosts
+hostname_hosts_enabled: true
+
+# IP to be used for /etc/hosts
+hostname_hosts_ip: "{{ ansible_facts.default_ipv4.address }}"
